@@ -1,0 +1,58 @@
+<div class="container">
+    <input id='load-input' type="text" aria-multiline="true" title="existing picklist:"> 
+    <button (click)="doLoad()">Load</button> 
+
+</div>
+
+<div class="container">
+    <table cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+        <thead>
+            <tr>
+                <th><b>Id</b></th>
+                <th><b>Image</b></th>
+                <th><b>Name</b></th>
+                <th><b>Type</b></th>
+                <th><b>Cost</b></th>
+                <th><b>Damage</b></th>
+                <th><b>Health</b></th>
+                <th><b>Abilities</b></th>
+                <th><b>PlayerHP</b></th>
+                <th><b>EnemyHP</b></th>
+                <th><b>CardDraw</b></th>
+                <th><b>Text description</b></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="example-box" *ngFor="let card of picklistData" cdkDrag>
+                <td>{{card.Id}}</td>
+                <td><a><img src="https://files.codingame.com/legends-of-code-and-magic/portraits/{{card.Id.toString().padStart(3, '0')}}.png"
+                            width="50"><img class="enlarge"
+                            src="https://files.codingame.com/legends-of-code-and-magic/portraits/{{card.Id.toString().padStart(3, '0')}}.png"></a>
+                </td>
+                <td><b><a>{{card.Name}}<img class="enlarge"
+                                src="https://files.codingame.com/legends-of-code-and-magic/cards/{{card.Id.toString().padStart(3, '0')}}.png"></a></b>
+                </td>
+                <td>{{card.Type}}</td>
+                <td>{{card.Cost}}</td>
+                <td>{{card.Damage}}</td>
+                <td>{{card.Health}}</td>
+                <td>
+                    <div class="keywords">{{card.Abilities}}</div>
+                </td>
+                <td>{{card.PlayerHP}}</td>
+                <td>{{card.EnemyHP}}</td>
+                <td>{{card.CardDraw}}</td>
+                <td><i>{{card['Text description']}}</i></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container">
+    <div class="codeheader" id="codeheader_cSharp">C#</div>
+    <div id="codebox">
+        <code>
+            <p>{{picklistExport}}</p>
+        </code>
+    </div>
+</div>
